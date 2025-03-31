@@ -42,11 +42,22 @@ public class Main extends Application {
   private void createAndAddVinyls() {
     VinylList vinylList = VinylList.getInstance(); // Get the Singleton instance
 
-    // Create 10 vinyls with sample data and add them to the VinylList
-    for (int i = 1; i <= 10; i++) {
-      Vinyl vinyl = new Vinyl("Title " + i, "Artist " + i, 2000 + i);
-      vinylList.addVinyl(vinyl);
-    }
+//    // Create 10 vinyls with sample data and add them to the VinylList
+//    for (int i = 1; i <= 10; i++) {
+//      Vinyl vinyl = new Vinyl("Title " + i, "Artist " + i, 2000 + i);
+//      vinylList.addVinyl(vinyl);
+//    }
+
+    vinylList.addVinyl(new Vinyl("Blackbird", "Alter Bridge", 2007));
+    vinylList.addVinyl(new Vinyl("The Concrete Confessional", "Hatebreed", 2016));
+    vinylList.addVinyl(new Vinyl("Around the Fur", "Deftones", 1997));
+    vinylList.addVinyl(new Vinyl("Cease to Begin", "Band of Horses", 2007));
+    vinylList.addVinyl(new Vinyl("Continuum", "John Mayer", 2006));
+    vinylList.addVinyl(new Vinyl("Origin of Symmetry", "Muse", 2001));
+    vinylList.addVinyl(new Vinyl("Follow The Leader", "Korn", 1998));
+    vinylList.addVinyl(new Vinyl("Nevermind", "Nirvana", 1991));
+    vinylList.addVinyl(new Vinyl("Dookie",  "Green Day", 1994));
+    vinylList.addVinyl(new Vinyl("A Black Mile To The Surface", "Manchester Orchestra", 2017));
 
     System.out.println("10 vinyls added to the list!");
   }
