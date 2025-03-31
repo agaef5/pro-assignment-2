@@ -24,6 +24,6 @@ public class Rented implements VinylState
   }
   @Override public void markForRemoval(Vinyl vinyl)
   {
-    vinyl.markForRemoval();
+
   }
 }
