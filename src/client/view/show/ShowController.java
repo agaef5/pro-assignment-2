@@ -1,19 +1,19 @@
-package view.show;
+package client.view.show;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import model.Vinyl;
+import server.model.Vinyl;
 
 
 public class ShowController
 {
     @FXML
     private ListView<Vinyl> vinylListView;
-    private ShowVM vm;
+    private client.view.show.ShowVM vm;
 
     @FXML
     public void initialize() {
-      vm = new ShowVM();
+      vm = new client.view.show.ShowVM();
 
       // Bind the ListView to the ObservableList in the ViewModel
       vinylListView.itemsProperty().bind(vm.getVinyls());

@@ -1,8 +1,8 @@
-package model;
+package server.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import view.VinylStateListener;
+import client.view.VinylStateListener;
 
 public class Vinyl
 {
@@ -66,7 +66,7 @@ public class Vinyl
 
   @Override
   public String toString() {
-    String result = title + " by " + artist + " (" + releaseYear + ")"
+    String result = title + " - " + artist + " (" + releaseYear + ")"
         + " - (" + currentState.getClass().getSimpleName() + ")";
 
     if (removeFlag) {

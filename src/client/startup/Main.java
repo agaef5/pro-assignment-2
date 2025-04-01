@@ -1,11 +1,13 @@
+package client.startup;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import model.Vinyl;
-import model.VinylList;
+import server.model.Vinyl;
+import server.model.VinylList;
 
 import java.io.IOException;
 

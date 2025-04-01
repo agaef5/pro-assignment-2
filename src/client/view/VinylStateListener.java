@@ -1,6 +1,6 @@
-package view;
+package client.view;
 
-import model.Vinyl;
+import server.model.Vinyl;
 
 public interface VinylStateListener
 {
