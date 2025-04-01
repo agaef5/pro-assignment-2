@@ -2,20 +2,21 @@ package server.model;
 
 import java.util.ArrayList;
 
-public class VinylList
+public class VinylList implements VinylDataModel
 {
   private ArrayList<Vinyl> vinyls;
   private static VinylList instance;
 
   private VinylList()
   {
-    vinyls = new ArrayList<Vinyl>();
+    vinyls = new ArrayList<>();
   }
 
   public void addVinyl(Vinyl vinyl)
   {
     vinyls.add(vinyl);
   }
+
   public void removeVinyl(Vinyl vinyl)
   {
     vinyls.remove(vinyl);
