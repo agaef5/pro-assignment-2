@@ -22,13 +22,17 @@ public class SocketHandler implements VinylStateListenerServer, Runnable
     this.clientSocket = clientSocket;
     this.vinylList = VinylList.getInstance();
     this.gson = new Gson();
+  }
 
+  public void run()
+  {
+    while(true){
     try {
-   //initizalize input streams and output streams
+      //initialize input streams and output streams
       this.in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
       this.out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-    //registre as a listener 
+      //registry as a listener
       for (Vinyl vinyl : vinylList.getVinylList()) {
         vinyl.addListener(this);
       }
@@ -36,16 +40,17 @@ public class SocketHandler implements VinylStateListenerServer, Runnable
       System.err.println("error in initializing socket streams: " + e.getMessage());
       closeConnection();
     }
-
-
+    }
   }
 
   private void closeConnection()
   {
   }
 
-  public void run()
+  public void handleRequest(ObjectInputStream incomingData, ObjectOutputStream outgoingData)
   {
+
+
   }
 
   @Override public void update(Vinyl vinyl)
