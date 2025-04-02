@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import java.io.*;
 import java.net.Socket;
 
-public class SocketHandler implements VinylStateListener, Runnable
+public class SocketHandler implements VinylStateListenerServer, Runnable
 {
   private final Socket clientSocket;
   private BufferedReader in;
@@ -48,6 +48,8 @@ public class SocketHandler implements VinylStateListener, Runnable
   {
   }
 
+  @Override public void update(Vinyl vinyl)
+  {
 
-
+  }
 }

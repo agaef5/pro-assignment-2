@@ -2,7 +2,7 @@ package server.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import client.view.VinylStateListener;
+import server.networking.socketHandler.VinylStateListenerServer;
 
 public class Vinyl
 {
@@ -11,7 +11,7 @@ public class Vinyl
   private int releaseYear;
   private VinylState currentState;
   private boolean removeFlag;
-  private List<VinylStateListener> listeners = new ArrayList<>();
+  private List<VinylStateListenerServer> listeners = new ArrayList<>();
 
 
   public Vinyl(String title, String artist, int releaseYear)
@@ -49,18 +49,18 @@ public class Vinyl
     notifyListeners();
   }
 
-  public void addListener(VinylStateListener listener)
+  public void addListener(VinylStateListenerServer listener)
   {
     listeners.add(listener);
   }
-  protected void removeListener(VinylStateListener listener)
+  protected void removeListener(VinylStateListenerServer listener)
   {
     listeners.remove(listener);
   }
 
   public void notifyListeners()
   {
-    for (VinylStateListener listener : listeners)
+    for (VinylStateListenerServer listener : listeners)
       listener.update(this);
   }
 
