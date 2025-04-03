@@ -80,4 +80,18 @@ public class Vinyl
   {
     return removeFlag;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
+    Vinyl vinyl = (Vinyl) obj;
+    return releaseYear == vinyl.releaseYear &&
+        title.equals(vinyl.title) &&
+        artist.equals(vinyl.artist);
+  }
+
+
 }
+

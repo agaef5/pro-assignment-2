@@ -31,4 +31,53 @@ public class VinylList
     }
     return instance;
   }
+
+public void reserveVinyl (Vinyl vinyl)
+{
+  for (int i = 0; i< vinyls.size();i++)
+  {
+    if (vinyls.get(i).equals(vinyl))
+    {
+      vinyls.get(i).reserve();
+      return;
+    }
+  }
+}
+
+public void rentVinyl(Vinyl vinyl)
+{
+  for (int i = 0; i< vinyls.size();i++)
+  {
+    if (vinyls.get(i).equals(vinyl))
+    {
+      vinyls.get(i).rent();
+      return;
+    }
+  }
+}
+
+public void returnVinyl(Vinyl vinyl)
+{
+  for (int i = 0; i< vinyls.size();i++)
+  {
+    if (vinyls.get(i).equals(vinyl))
+    {
+      vinyls.get(i).returnVinyl();
+      return;
+    }
+  }
+}
+
+public void removeFlag(Vinyl vinyl)
+{
+  for (int i = 0; i< vinyls.size();i++)
+  {
+    if (vinyls.get(i).equals(vinyl))
+    {
+      vinyls.get(i).markForRemoval();
+      return;
+    }
+  }
+}
+
 }
