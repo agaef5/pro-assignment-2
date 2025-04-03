@@ -1,8 +1,8 @@
-package view.edit;
+package client.view.edit;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import model.Vinyl;
+import server.model.Vinyl;
 
 public class EditController {
   @FXML

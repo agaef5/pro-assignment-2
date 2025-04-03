@@ -1,11 +1,11 @@
-package model;
+package server.model;
 
 public class Rented implements VinylState
 {
   @Override public void reserve(Vinyl vinyl)
   {
     System.out.println("Vinyl reserved while rented");
-    vinyl.setState(new ResservedRented());
+    vinyl.setState(new ReservedRented());
   }
 
   @Override public void rent(Vinyl vinyl)

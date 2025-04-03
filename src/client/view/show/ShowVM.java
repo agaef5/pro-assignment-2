@@ -1,12 +1,12 @@
-package view.show;
+package client.view.show;
 
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.Vinyl;
-import model.VinylList;
-import view.VinylStateListener;
+import server.model.Vinyl;
+import server.model.VinylList;
+import client.view.VinylStateListener;
 
 public class ShowVM implements VinylStateListener
 {

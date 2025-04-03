@@ -1,6 +1,6 @@
-package model;
+package server.model;
 
-public class ResservedRented implements VinylState
+public class ReservedRented implements VinylState
 {
   @Override public void reserve(Vinyl vinyl)
   {
