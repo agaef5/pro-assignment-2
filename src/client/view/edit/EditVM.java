@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import server.model.Vinyl;
 import server.model.VinylList;
 import client.view.VinylStateListener;
+import server.networking.socketHandler.VinylStateListenerServer;
 
 public class EditVM implements VinylStateListener
 {
@@ -19,7 +20,7 @@ public class EditVM implements VinylStateListener
         VinylList.getInstance().getVinylList());
     vinyls = new SimpleListProperty<>(vinylList);
     for (Vinyl vinyl : vinyls) {
-      vinyl.addListener(this);
+      vinyl.addListener((VinylStateListenerServer) this);
     }
   }
 

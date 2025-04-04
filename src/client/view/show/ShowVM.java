@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import server.model.Vinyl;
 import server.model.VinylList;
 import client.view.VinylStateListener;
+import server.networking.socketHandler.VinylStateListenerServer;
 
 public class ShowVM implements VinylStateListener
 {
@@ -19,7 +20,7 @@ public class ShowVM implements VinylStateListener
 
     // Add VinylStateListener to each vinyl in the list
     for (Vinyl vinyl : vinyls) {
-      vinyl.addListener(this);
+      vinyl.addListener((VinylStateListenerServer) this);
     }
   }
 
