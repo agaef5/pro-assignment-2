@@ -11,6 +11,11 @@ import com.google.gson.Gson;
 import java.io.*;
 import java.net.Socket;
 
+/*class responsible for dealing communication between client and server.
+* It reads the data from the client, processes it and sends a response back.
+* It updates the vinyl state via VinylStateListenerServer inferface, notifying
+* the client of state changes
+*/
 public class SocketHandler implements VinylStateListenerServer, Runnable {
   private final Socket clientSocket;
   private BufferedReader in;
@@ -29,15 +34,17 @@ public class SocketHandler implements VinylStateListenerServer, Runnable {
   public void run() {
     try {
       // Initialize input streams en output streams
-      this.in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-      this.out = new PrintWriter(clientSocket.getOutputStream(), true);
+      //in = incoming data from client. Client sends JSON-formatted message (action + payload)
+            this.in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            this.out = new PrintWriter(clientSocket.getOutputStream(), true);
 
       // Register SocketHandler as listener for changes in vinyls
       for (Vinyl vinyl : vinylList.getVinylList()) {
         vinyl.addListener(this);
       }
 
-      // REad incoming messages from client
+      //Waiting for incoming messages from client
+      //Once message is recieved, processMEssage method is executed.
       String message;
       while ((message = in.readLine()) != null) {
         processMessage(message);
@@ -61,7 +68,7 @@ public class SocketHandler implements VinylStateListenerServer, Runnable {
 
   private void processMessage(String message) {
     try {
-      // recieve JSON-message from client
+      //Recieved message from client is parsed into Request object using GSON
       Request request = gson.fromJson(message, Request.class);
 
       //process action based on request
