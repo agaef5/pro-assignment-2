@@ -98,19 +98,19 @@ public class SocketHandler implements VinylStateListenerServer, Runnable {
   private void handleReserve(Object payload) {
     Vinyl vinyl = gson.fromJson(payload.toString(), Vinyl.class);
     vinylList.reserveVinyl(vinyl);
-    sendResponse("success", "Vinyl gereserveerd: " + vinyl.toString());
+    sendResponse("success", "Vinyl reserved: " + vinyl.toString());
   }
 
   private void handleRent(Object payload) {
     Vinyl vinyl = gson.fromJson(payload.toString(), Vinyl.class);
     vinylList.rentVinyl(vinyl);
-    sendResponse("success", "Vinyl verhuurd: " + vinyl.toString());
+    sendResponse("success", "Vinyl rented: " + vinyl.toString());
   }
 
   private void handleReturn(Object payload) {
     Vinyl vinyl = gson.fromJson(payload.toString(), Vinyl.class);
     vinylList.returnVinyl(vinyl);
-    sendResponse("success", "Vinyl teruggebracht: " + vinyl.toString());
+    sendResponse("success", "Vinyl returned: " + vinyl.toString());
   }
 
   private void handleChangeVinylState(Object payload) {
