@@ -1,16 +1,14 @@
 package client.networking;
 
 import com.google.gson.Gson;
-import protocolWrappers.Request;
-import server.model.Vinyl;
-import server.model.VinylList;
-import server.networking.socketHandler.VinylStateListenerServer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientHandler implements VinylClient, SocketSubject, Runnable
 {
@@ -18,11 +16,16 @@ public class ClientHandler implements VinylClient, SocketSubject, Runnable
   private BufferedReader in;
   private PrintWriter out;
   private Gson gson;
+  private List<SocketSubject> listeners = new ArrayList<>();
   
   public ClientHandler ( Socket socket ) throws IOException
   {
     this.socket = socket;
+    this.gson=new Gson();
+    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    out = new PrintWriter(socket.getOutputStream(), true);
   }
+
   private void processMessage(String message) {
     switch (message) {
       case "getVinyls":
@@ -46,20 +49,32 @@ public class ClientHandler implements VinylClient, SocketSubject, Runnable
   }
   @Override public void run ()
   {
-    gson = new Gson();
-    try
-    {
-      in = new BufferedReader( new InputStreamReader(socket.getInputStream()));
-      out = new PrintWriter(socket.getOutputStream(), true);
-      
+    try {
       String message;
-      while ( (message = in.readLine()) != null ){
+      while ((message = in.readLine()) != null) {
         processMessage(message);
-        }
       }
-    catch ( IOException ex )
-    {
-      throw new RuntimeException(ex);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    }
+
+  @Override public void notifyListeners()
+  {
+    for (SocketSubject listener : listeners){
+      listener.notifyListeners();
     }
   }
+
+  @Override public void addListener(SocketSubject listener)
+  {
+    listener.addListener(listener);
+  }
+
+  @Override public void removeListener(SocketSubject listener)
+  {
+    listener.removeListener(listener);
+  }
+
+
 }
